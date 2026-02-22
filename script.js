@@ -28,6 +28,11 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     targets.forEach(function (el) { observer.observe(el); });
+
+    // Fallback: make all visible after 3s in case observer doesn't fire
+    setTimeout(function () {
+      targets.forEach(function (el) { el.classList.add('visible'); });
+    }, 3000);
   }
 
   // ---------- Form submission (Formsubmit.co AJAX) ----------
