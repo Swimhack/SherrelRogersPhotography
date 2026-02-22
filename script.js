@@ -8,7 +8,7 @@
 
   // ---------- Scroll-reveal (fade-in) ----------
   function initFadeIn() {
-    const targets = document.querySelectorAll(
+    var targets = document.querySelectorAll(
       '.section-title, .section-intro, .pivot-card, .system-item, .tier-card, .step, .faq-item, .about-text, .cta-actions, .contact-form'
     );
     targets.forEach(function (el) { el.classList.add('fade-in'); });
@@ -48,8 +48,9 @@
       var name = form.querySelector('#name');
       var email = form.querySelector('#email');
       var friction = form.querySelector('#friction');
+      var selectedOption = form.querySelector('input[name="option"]:checked');
 
-      if (!name.value.trim() || !email.value.trim() || !friction.value) {
+      if (!selectedOption || !name.value.trim() || !email.value.trim() || !friction.value) {
         form.removeAttribute('novalidate');
         form.reportValidity();
         form.setAttribute('novalidate', '');
@@ -66,6 +67,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
+          option: selectedOption.value,
           name: name.value.trim(),
           email: email.value.trim(),
           phone: form.querySelector('#phone').value.trim(),
@@ -86,7 +88,7 @@
       })
       .catch(function () {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Send details to James';
+        submitBtn.textContent = 'Send my option choice';
         alert('Something went wrong. Please try again or call (713) 444-6732.');
       });
     });

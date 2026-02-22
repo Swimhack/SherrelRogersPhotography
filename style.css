@@ -603,6 +603,44 @@ ul { list-style: none; }
   margin-top: var(--space-sm);
 }
 
+/* ---------- Radio group ---------- */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  transition: border-color 0.2s, background 0.2s;
+}
+.radio-label:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+.radio-label input[type="radio"] {
+  width: auto;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+.radio-label input[type="radio"]:checked + span {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+.required {
+  color: #c33;
+  font-weight: 400;
+}
+
 /* ---------- Success state ---------- */
 .form-success {
   text-align: center;
